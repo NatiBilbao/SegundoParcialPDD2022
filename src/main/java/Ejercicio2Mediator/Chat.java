@@ -18,13 +18,32 @@ public class Chat implements IChatEducativo{
             }
         } else if (tipoDeMensaje == "Docentes" && sender.getTipoDePersona().equals("Estudiantes")) {
             for(Persona persona: listaDeChats){
-                if (persona.getTipoDePersona().equals("Docentes"))
-                persona.received(msg);
+                if (persona.getTipoDePersona().equals("Docentes")) {
+                    persona.received(msg);
+                }
             }
         } else if (tipoDeMensaje == "Administrativos" && sender.getTipoDePersona().equals("Estudiantes")) {
             for(Persona persona: listaDeChats){
-                if (persona.getTipoDePersona().equals("Administrativos"))
+                if (persona.getTipoDePersona().equals("Administrativos")) {
                     persona.received(msg);
+                }
             }
+        } else if (tipoDeMensaje == "Docentes" && sender.getTipoDePersona().equals("Docentes")) {
+            for (Persona persona : listaDeChats) {
+                if (persona.getTipoDePersona().equals("Docentes")) {
+                    persona.received(msg);
+                }
+            }
+        } else if (tipoDeMensaje == "Estudiantes" && sender.getTipoDePersona().equals("Docentes")) {
+            for (Persona persona : listaDeChats) {
+                if (persona.getTipoDePersona().equals("Estudiante")) {
+                    persona.received(msg);
+                }
+            }
+        } else if(tipoDeMensaje == "Todos" && sender.getTipoDePersona().equals("Administrativos")) {
+            for (Persona persona : listaDeChats) {
+                persona.received(msg);
+            }
+        }
     }
 }
