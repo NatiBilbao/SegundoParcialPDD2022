@@ -1,29 +1,37 @@
 package Ejercicio2Mediator;
 
-public abstract class Estudiantes {
-    protected IChatEducativo chatEducativo;
+public class Estudiantes extends Persona {
     int numeroMatricula;
     String nombre;
 
     public Estudiantes(IChatEducativo chatEducativo){
-        this.chatEducativo = chatEducativo;
+        super(chatEducativo);
     }
 
     public int getNumeroMatricula() {
         return numeroMatricula;
     }
 
-    public Estudiantes setNumeroMatricula(int numeroMatricula) {
+    public void setNumeroMatricula(int numeroMatricula) {
         this.numeroMatricula = numeroMatricula;
-        return this;
     }
 
     public String getNombre() {
         return nombre;
     }
 
-    public Estudiantes setNombre(String nombre) {
+    public void setNombre(String nombre) {
         this.nombre = nombre;
-        return;this;
     }
+
+    @Override
+    public void send(String msg, String tipoDeMensaje){
+        chatEducativo.send(msg, tipoDeMensaje, this);
+    }
+
+    @Override
+    public void received(String msg){
+        System.out.println("Mensaje recivido" + nombre + "=>" + msg);
+    }
+
 }
