@@ -1,8 +1,8 @@
 package Ejercicio2Mediator;
 
 public class Estudiantes extends Persona {
-    int numeroMatricula;
-    String nombre;
+    private int numeroMatricula;
+    private String nombre;
 
     public Estudiantes(IChatEducativo chatEducativo){
         super(chatEducativo);
@@ -31,7 +31,7 @@ public class Estudiantes extends Persona {
 
     @Override
     public void received(String msg){
-        System.out.println("Mensaje recivido" + nombre + "=>" + msg);
+        System.out.println("Mensaje recibido por el estudiante" + nombre + "=>" + msg);
     }
 
 }
